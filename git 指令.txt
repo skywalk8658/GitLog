@@ -1,0 +1,96 @@
+git branch     檢視當前所有的分支
+git branch –r  檢視遠端所有分支
+git branch –a  檢視本地遠端分支
+git tag        檢視版本打的Tag
+git checkout [name]     切換到name分支
+git branch –d [name]    刪除name分支
+git checkout –b [name]  建立name分支 並切換到name分支上
+
+git init       把當前的目錄變成可以管理的git倉庫，生成隱藏.git檔案。
+git add XX     把xx檔案新增到暫存區去。
+git add –A  （git add --all的縮寫）
+git add .      監控工作區的狀態樹，使用它會把工作時的所有變化提交到暫存區
+git remote add origin 倉庫地址   (關聯一個遠端庫)
+git push –u(第一次要用-u 以後不需要) origin master (把當前master分支推送到遠端庫)
+git config --global push.default simple 設定只push該分支的commit
+git log --oneline 顯示單行commit記錄
+git reflog <分支名稱> 查看該分支的commit記錄
+git clone        倉庫地址  (從遠端庫中克隆)
+git status       檢視倉庫狀態
+git diff  XX     檢視XX檔案修改了那些內容
+git reflog       檢視歷史記錄的版本號id
+git merge dev    在當前的分支上合併dev分支
+git remote       檢視遠端庫的資訊
+git remote –v    檢視遠端庫的詳細資訊
+git stash        把當前的工作隱藏起來 等以後恢復現場後繼續工作
+git stash list   檢視所有被隱藏的檔案列表
+git push origin master  Git會把master分支推送到遠端庫對應的遠端分支上
+git reset  –hard HEAD^ 或者 git reset  –hard HEAD~ 回退到上一個版本
+					(如果想回退到100個版本，使用git reset –hard HEAD~100 
+
+
+##新增一個遠端檔案庫設定						
+git remote add origin https://github.com/skywalk8658/log.git
+
+##查看所有遠端設定
+git remote -v
+
+##抓取遠端分支到本地端，並建立遠端分支
+git remote update
+Fetching origin
+ * [new branch]      master     -> origin/master
+ 
+##建立一個新的檔案庫 create a new repository on the command line
+echo "# GitLog" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/skywalk8658/GitLog.git
+git push -u origin master
+
+##推送到一個現有檔案庫push an existing repository from the command line
+git remote add origin https://github.com/skywalk8658/GitLog.git
+git push -u origin master
+
+##查看git 設定檔
+git config -l 查看三種設定檔
+git config --system -l  系統設定檔
+git config --global-l   登入帳號的home directory的.gitconfig的設定檔
+git config --local -l   檔案庫中的設定檔
+
+##將操作者姓名及email記錄到檔案庫中的設定檔
+git config user.name 'XXX'
+git config user.email 'XXX@hotmail.ocm'
+
+##將操作者姓名及email記錄到登入帳號的home directory的.gitconfig的設定檔
+git config --global user.name 'XXX'
+git config --global user.email 'XXX@hotmail.ocm'
+
+##將操作者姓名及email記錄到登入帳號的home directory的.gitconfig的設定檔
+git config --system user.name 'XXX'
+git config --system user.email 'XXX@hotmail.ocm'
+
+#合併時產生commit節點記錄，使用--no-ff
+git merge --no-ff 分支名稱
+
+#設定mergetool為kdiff3.exe的指令
+git config --global merge.tool kdiff3
+git config --global mergetool.kdiff3.cmd "\"D:\Program Files\KDiff3/kdiff3.exe\" \"\$BASE\" \"\$LOCAL\" \"\$REMOTE\" -o \"\$MERGED\""
+git config --global mergetool.prompt false
+git config --global mergetool.keepBackup false
+
+切換到master分支
+git checkout master
+將cat分支合併到master
+git merge cat
+發生衝突，使用mergetool，執行kdiff3
+git mergetool
+
+
+
+
+
+
+
+
+
