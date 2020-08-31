@@ -88,9 +88,6 @@ git mergetool
 
 
 
-
-
-
-
-
+將檔案從trached狀態轉變成untracked狀態
+git rm --cached 檔案名稱
 
